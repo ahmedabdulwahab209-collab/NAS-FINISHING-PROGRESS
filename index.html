@@ -11,8 +11,8 @@
 
 body{
     font-family:Arial;
-    background:#f2f2f2;
-    color:#111;
+    background:#0f0f0f;
+    color:#fff;
     margin:0;
     padding:20px;
 }
@@ -21,28 +21,29 @@ body{
 .header{
     display:flex;
     justify-content:space-between;
-    border:2px solid #000;
+    border:2px solid #fff;
     padding:20px;
     margin-bottom:15px;
-    background:#fff;
+    background:#000;
 }
 
 .title{
     font-size:42px;
     font-weight:bold;
-    color:#000;
+    letter-spacing:1px;
 }
 
 .sub{
     font-weight:bold;
-    color:#444;
+    color:#ccc;
 }
 
+/* NOTE */
 .note{
     text-align:center;
     margin-bottom:15px;
-    color:#555;
     font-weight:bold;
+    color:#aaa;
 }
 
 /* CONTROLS */
@@ -55,17 +56,16 @@ body{
 
 button, select{
     padding:10px;
-    border:2px solid #000;
-    background:#fff;
-    color:#000;
+    border:2px solid #fff;
+    background:#000;
+    color:#fff;
     cursor:pointer;
     font-weight:bold;
-    transition:0.2s;
 }
 
 button:hover{
-    background:#000;
-    color:#fff;
+    background:#fff;
+    color:#000;
 }
 
 /* MAIN GRID */
@@ -75,73 +75,59 @@ button:hover{
     gap:15px;
 }
 
-/* CARD */
+/* CARDS */
 .card{
-    border:2px solid #000;
+    border:2px solid #fff;
     padding:15px;
-    background:#fff;
+    background:#111;
 }
 
-/* ITEM */
+/* ITEMS */
 .item{
     display:flex;
+    justify-content:space-between;
     align-items:center;
-    justify-content:space-between;
-    margin:10px 0;
-    gap:10px;
-}
-
-.item-header{
-    display:flex;
-    justify-content:space-between;
+    margin:8px 0 3px;
+    color:#ddd;
     font-size:14px;
-    color:#111;
 }
 
-/* BAR */
+/* PROGRESS BAR */
 .bar{
-    height:6px;
-    background:#000;
-    margin-top:4px;
-}
-
-/* CIRCLE */
-.circle{
-    width:45px;
-    height:45px;
-    transform:rotate(-90deg);
-}
-
-.circle-bg{
-    fill:none;
-    stroke:#ddd;
-    stroke-width:4;
-}
-
-.circle-progress{
-    fill:none;
-    stroke:#000;
-    stroke-width:4;
-    stroke-linecap:round;
+    height:8px;
+    background:#fff;
+    margin-bottom:10px;
+    border-radius:10px;
+    transition:0.3s;
 }
 
 /* CHART */
 canvas{
-    border:2px solid #000;
-    background:#fff;
+    border:2px solid #fff;
     padding:10px;
+    background:#111;
 }
 
 /* FOOTER */
 .footer{
     text-align:center;
     margin-top:20px;
-    color:#444;
     font-weight:bold;
+    color:#aaa;
+}
+
+h3{
+    margin-top:20px;
+    margin-bottom:10px;
+    color:#fff;
+    border-bottom:1px solid #555;
+    padding-bottom:5px;
 }
 
 @media(max-width:900px){
-    .container{grid-template-columns:1fr;}
+    .container{
+        grid-template-columns:1fr;
+    }
 }
 
 </style>
@@ -150,7 +136,7 @@ canvas{
 <body>
 
 <div class="header">
-    <div class="title">شركة ناس للإستشارات والأعمال الهندسية</div>
+    <div class="title">شركة ناس</div>
     <div class="sub">KHG | شركة الخليفة القابضة</div>
 </div>
 
@@ -174,46 +160,165 @@ canvas{
 </div>
 
 <div class="footer">
-Prepared By Eng / Ahmed Abdulwahab - Technical Office Department
+إعداد مهندس / أحمد عبدالوهاب - إدارة المكتب الفني
 </div>
 
 <script>
 
 const data = {
+
 "Site 140":{
-"Building 1":{"Plaster":35,"Block":70,"GRC":15,"Sandblast":70,"Paint":5,"Marble":40,"Plumbing":30,"Electrical":70},
-"Building 3":{"Block":100,"Plaster":100,"Paint":100,"Gypsum":100,"Ceramic":100,"Marble":100,"Glass":90},
-"Building 4":{"Block":100,"Plaster":90,"Paint":85,"Gypsum":75,"Ceramic":90,"Marble":100,"Glass":30},
-"Building 7":{"Block":70,"Plaster":0,"Marble":0,"Ceramic":0,"Gypsum":0,"Plumbing":20,"Electrical":10}
+
+"Building 1":{
+"Plaster":70,
+"Block":80,
+"GRC":60,
+"Sandblast":50,
+"Paint":65,
+"Marble":40,
+"Plumbing":55,
+"Electrical":100
+},
+
+"Building 3":{
+"Block":70,
+"Plaster":60,
+"Paint":50,
+"Gypsum":40,
+"Ceramic":55,
+"Marble":45,
+"Glass":30
+},
+
+"Building 4":{
+"Block":65,
+"Plaster":60,
+"Paint":50,
+"Gypsum":40,
+"Ceramic":55,
+"Marble":45,
+"Glass":30
+},
+
+"Building 7":{
+"Block":80,
+"Plaster":75,
+"Marble":60,
+"Ceramic":55,
+"Gypsum":50,
+"Plumbing":45,
+"Electrical":40
+}
+
 },
 
 "Site 180":{
-"F2":{"Ceramic":90,"Marble":90,"Plaster":95,"Paint":65,"Gypsum":0,"Plumbing":80,"Electrical":60},
-"F3":{"Ceramic":90,"Marble":90,"Plaster":95,"Paint":65,"Gypsum":0,"Plumbing":80,"Electrical":60},
-"B":{"Ceramic":20,"Marble":30,"Plaster":50,"Paint":20,"Gypsum":0,"Plumbing":50,"Electrical":60},
-"CL":{"Ceramic":0,"Marble":20,"Plaster":50,"Paint":30,"Gypsum":0,"Plumbing":30,"Electrical":25}
+
+"F2":{
+"Ceramic":60,
+"Marble":50,
+"Plaster":70,
+"Paint":60,
+"Gypsum":40,
+"Plumbing":50,
+"Electrical":60
+},
+
+"F3":{
+"Ceramic":60,
+"Marble":50,
+"Plaster":70,
+"Paint":60,
+"Gypsum":40,
+"Plumbing":50,
+"Electrical":60
+},
+
+"B":{
+"Ceramic":60,
+"Marble":50,
+"Plaster":70,
+"Paint":60,
+"Gypsum":40,
+"Plumbing":50,
+"Electrical":60
+},
+
+"CL":{
+"Ceramic":60,
+"Marble":50,
+"Plaster":70,
+"Paint":60,
+"Gypsum":40,
+"Plumbing":50,
+"Electrical":60
+}
+
 },
 
 "Site 13":{
-"Main":{"Ceramic":100,"Marble":100,"Plaster":100,"Paint":85,"Gypsum":95,"Plumbing":95,"Electrical":95}
+
+"Main":{
+"Ceramic":60,
+"Marble":50,
+"Plaster":70,
+"Paint":60,
+"Gypsum":40,
+"Plumbing":50,
+"Electrical":60
+}
+
 },
 
 "Cafe 114-C":{
-"Main":{"Ceramic":95,"Marble":60,"Plaster":100,"Paint":80,"Gypsum":80,"Plumbing":95,"Electrical":85,"CurtainWall":60}
+
+"Main":{
+"Ceramic":60,
+"Marble":50,
+"Plaster":70,
+"Paint":60,
+"Gypsum":40,
+"Plumbing":50,
+"Electrical":60,
+"CurtainWall":30
+}
+
 },
 
 "Site 171":{
-"Villa":{"Ceramic":50,"Marble":60,"Plaster":85,"Paint":65,"Gypsum":75,"Plumbing":85,"Electrical":80}
+
+"Villa":{
+"Ceramic":60,
+"Marble":50,
+"Plaster":70,
+"Paint":60,
+"Gypsum":40,
+"Plumbing":50,
+"Electrical":60
+}
+
 },
 
 "Site 165":{
-"Lab":{"Ceramic":100,"Marble":100,"Plaster":100,"Paint":100,"Gypsum":100,"Plumbing":100,"Electrical":100,"LabSupply":50}
+
+"Lab":{
+"Ceramic":60,
+"Marble":50,
+"Plaster":70,
+"Paint":60,
+"Gypsum":40,
+"Plumbing":50,
+"Electrical":60,
+"LabSupply":35
+}
+
 }
 
 };
 
 const siteSelect=document.getElementById("siteSelect");
 const box=document.getElementById("dataBox");
+
 let chart;
 
 function init(){
@@ -223,46 +328,22 @@ siteSelect.innerHTML+=`<option>${s}</option>`;
 }
 
 load(siteSelect.value);
+
 siteSelect.onchange=()=>load(siteSelect.value);
 
 }
 
 function avg(obj){
+
 let sum=0,c=0;
-for(let i in obj){sum+=obj[i];c++;}
-return Math.round(sum/c);
+
+for(let i in obj){
+sum+=obj[i];
+c++;
 }
 
-function item(name,value){
+return Math.round(sum/c);
 
-const radius = 16;
-const circumference = 2 * Math.PI * radius;
-
-return `
-<div class="item">
-
-    <div style="flex:1;">
-
-        <div class="item-header">
-            <span>${name}</span>
-            <span>${value}%</span>
-        </div>
-
-        <div class="bar" style="width:${value}%"></div>
-
-    </div>
-
-    <svg class="circle" viewBox="0 0 40 40">
-        <circle class="circle-bg" cx="20" cy="20" r="${radius}"></circle>
-        <circle class="circle-progress"
-            cx="20" cy="20" r="${radius}"
-            stroke-dasharray="${circumference}"
-            stroke-dashoffset="${circumference - (value/100)*circumference}">
-        </circle>
-    </svg>
-
-</div>
-`;
 }
 
 function load(site){
@@ -278,15 +359,46 @@ let a=avg(data[site][b]);
 labels.push(b);
 values.push(a);
 
-html+=`<h3>${b} (Avg ${a}%)</h3>`;
+html+=`
+<h3>${b} (Avg ${a}%)</h3>
+`;
 
 for(let i in data[site][b]){
-html+=item(i,data[site][b][i]);
+
+let value = data[site][b][i];
+let done = value == 100;
+
+html+=`
+
+<div class="item">
+
+    <span>${i}</span>
+
+    <span style="
+        color:${done ? '#0a8f3d' : '#fff'};
+        font-weight:bold;
+    ">
+        ${done ? '✔ Completed' : value + '%'}
+    </span>
+
+</div>
+
+<div 
+    class="bar" 
+    style="
+        width:${value}%;
+        background:${done ? '#0a8f3d' : '#fff'};
+    ">
+</div>
+
+`;
+
 }
 
 }
 
 box.innerHTML=html;
+
 drawChart(labels,values);
 
 }
@@ -296,19 +408,35 @@ function drawChart(labels,values){
 if(chart) chart.destroy();
 
 chart=new Chart(document.getElementById("chart"),{
+
 type:"bar",
+
 data:{
 labels:labels,
+
 datasets:[{
-label:"Progress",
+label:"Progress %",
 data:values,
-backgroundColor:"#000"
+backgroundColor:"#fff"
 }]
+
 },
+
 options:{
-plugins:{legend:{display:false}},
-scales:{y:{beginAtZero:true,max:100}}
+
+plugins:{
+legend:{display:false}
+},
+
+scales:{
+y:{
+beginAtZero:true,
+max:100
 }
+}
+
+}
+
 });
 
 }
@@ -318,17 +446,27 @@ function exportCSV(){
 let csv="Site,Building,Item,Progress\n";
 
 for(let s in data){
+
 for(let b in data[s]){
+
 for(let i in data[s][b]){
+
 csv+=`${s},${b},${i},${data[s][b][i]}\n`;
+
 }
+
 }
+
 }
 
 let blob=new Blob([csv],{type:"text/csv"});
+
 let a=document.createElement("a");
+
 a.href=URL.createObjectURL(blob);
+
 a.download="progress.csv";
+
 a.click();
 
 }
