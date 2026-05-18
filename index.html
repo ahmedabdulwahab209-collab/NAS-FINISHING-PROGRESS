@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
@@ -28,7 +29,7 @@ body{
 }
 
 .title{
-    font-size:42px;
+    font-size:42px;   /* 🔥 اسم الشركة أكبر */
     font-weight:bold;
     letter-spacing:1px;
 }
@@ -82,23 +83,19 @@ button:hover{
     background:#111;
 }
 
-/* ITEMS */
+/* TEXT ITEMS */
 .item{
     display:flex;
     justify-content:space-between;
-    align-items:center;
-    margin:8px 0 3px;
+    margin:5px 0;
     color:#ddd;
-    font-size:14px;
 }
 
 /* PROGRESS BAR */
 .bar{
     height:8px;
     background:#fff;
-    margin-bottom:10px;
-    border-radius:10px;
-    transition:0.3s;
+    margin-bottom:8px;
 }
 
 /* CHART */
@@ -116,18 +113,8 @@ canvas{
     color:#aaa;
 }
 
-h3{
-    margin-top:20px;
-    margin-bottom:10px;
-    color:#fff;
-    border-bottom:1px solid #555;
-    padding-bottom:5px;
-}
-
 @media(max-width:900px){
-    .container{
-        grid-template-columns:1fr;
-    }
+    .container{grid-template-columns:1fr;}
 }
 
 </style>
@@ -166,152 +153,34 @@ h3{
 <script>
 
 const data = {
-
 "Site 140":{
-
-"Building 1":{
-"Plaster":70,
-"Block":80,
-"GRC":60,
-"Sandblast":50,
-"Paint":65,
-"Marble":40,
-"Plumbing":55,
-"Electrical":100
-},
-
-"Building 3":{
-"Block":70,
-"Plaster":60,
-"Paint":50,
-"Gypsum":40,
-"Ceramic":55,
-"Marble":45,
-"Glass":30
-},
-
-"Building 4":{
-"Block":65,
-"Plaster":60,
-"Paint":50,
-"Gypsum":40,
-"Ceramic":55,
-"Marble":45,
-"Glass":30
-},
-
-"Building 7":{
-"Block":80,
-"Plaster":75,
-"Marble":60,
-"Ceramic":55,
-"Gypsum":50,
-"Plumbing":45,
-"Electrical":40
-}
-
+"Building 1":{"Plaster":70,"Block":80,"GRC":60,"Sandblast":50,"Paint":65,"Marble":40,"Plumbing":55,"Electrical":60},
+"Building 3":{"Block":70,"Plaster":60,"Paint":50,"Gypsum":40,"Ceramic":55,"Marble":45,"Glass":30},
+"Building 4":{"Block":65,"Plaster":60,"Paint":50,"Gypsum":40,"Ceramic":55,"Marble":45,"Glass":30},
+"Building 7":{"Block":80,"Plaster":75,"Marble":60,"Ceramic":55,"Gypsum":50,"Plumbing":45,"Electrical":40}
 },
 
 "Site 180":{
-
-"F2":{
-"Ceramic":60,
-"Marble":50,
-"Plaster":70,
-"Paint":60,
-"Gypsum":40,
-"Plumbing":50,
-"Electrical":60
-},
-
-"F3":{
-"Ceramic":60,
-"Marble":50,
-"Plaster":70,
-"Paint":60,
-"Gypsum":40,
-"Plumbing":50,
-"Electrical":60
-},
-
-"B":{
-"Ceramic":60,
-"Marble":50,
-"Plaster":70,
-"Paint":60,
-"Gypsum":40,
-"Plumbing":50,
-"Electrical":60
-},
-
-"CL":{
-"Ceramic":60,
-"Marble":50,
-"Plaster":70,
-"Paint":60,
-"Gypsum":40,
-"Plumbing":50,
-"Electrical":60
-}
-
+"F2":{"Ceramic":60,"Marble":50,"Plaster":70,"Paint":60,"Gypsum":40,"Plumbing":50,"Electrical":60},
+"F3":{"Ceramic":60,"Marble":50,"Plaster":70,"Paint":60,"Gypsum":40,"Plumbing":50,"Electrical":60},
+"B":{"Ceramic":60,"Marble":50,"Plaster":70,"Paint":60,"Gypsum":40,"Plumbing":50,"Electrical":60},
+"CL":{"Ceramic":60,"Marble":50,"Plaster":70,"Paint":60,"Gypsum":40,"Plumbing":50,"Electrical":60}
 },
 
 "Site 13":{
-
-"Main":{
-"Ceramic":60,
-"Marble":50,
-"Plaster":70,
-"Paint":60,
-"Gypsum":40,
-"Plumbing":50,
-"Electrical":60
-}
-
+"Main":{"Ceramic":60,"Marble":50,"Plaster":70,"Paint":60,"Gypsum":40,"Plumbing":50,"Electrical":60}
 },
 
 "Cafe 114-C":{
-
-"Main":{
-"Ceramic":60,
-"Marble":50,
-"Plaster":70,
-"Paint":60,
-"Gypsum":40,
-"Plumbing":50,
-"Electrical":60,
-"CurtainWall":30
-}
-
+"Main":{"Ceramic":60,"Marble":50,"Plaster":70,"Paint":60,"Gypsum":40,"Plumbing":50,"Electrical":60,"CurtainWall":30}
 },
 
 "Site 171":{
-
-"Villa":{
-"Ceramic":60,
-"Marble":50,
-"Plaster":70,
-"Paint":60,
-"Gypsum":40,
-"Plumbing":50,
-"Electrical":60
-}
-
+"Villa":{"Ceramic":60,"Marble":50,"Plaster":70,"Paint":60,"Gypsum":40,"Plumbing":50,"Electrical":60}
 },
 
 "Site 165":{
-
-"Lab":{
-"Ceramic":60,
-"Marble":50,
-"Plaster":70,
-"Paint":60,
-"Gypsum":40,
-"Plumbing":50,
-"Electrical":60,
-"LabSupply":35
-}
-
+"Lab":{"Ceramic":60,"Marble":50,"Plaster":70,"Paint":60,"Gypsum":40,"Plumbing":50,"Electrical":60,"LabSupply":35}
 }
 
 };
@@ -334,16 +203,9 @@ siteSelect.onchange=()=>load(siteSelect.value);
 }
 
 function avg(obj){
-
 let sum=0,c=0;
-
-for(let i in obj){
-sum+=obj[i];
-c++;
-}
-
+for(let i in obj){sum+=obj[i];c++;}
 return Math.round(sum/c);
-
 }
 
 function load(site){
@@ -364,35 +226,10 @@ html+=`
 `;
 
 for(let i in data[site][b]){
-
-let value = data[site][b][i];
-let done = value == 100;
-
 html+=`
-
-<div class="item">
-
-    <span>${i}</span>
-
-    <span style="
-        color:${done ? '#0a8f3d' : '#fff'};
-        font-weight:bold;
-    ">
-        ${done ? '✔ Completed' : value + '%'}
-    </span>
-
-</div>
-
-<div 
-    class="bar" 
-    style="
-        width:${value}%;
-        background:${done ? '#0a8f3d' : '#fff'};
-    ">
-</div>
-
+<div class="item"><span>${i}</span><span>${data[site][b][i]}%</span></div>
+<div class="bar" style="width:${data[site][b][i]}%"></div>
 `;
-
 }
 
 }
@@ -408,35 +245,21 @@ function drawChart(labels,values){
 if(chart) chart.destroy();
 
 chart=new Chart(document.getElementById("chart"),{
-
 type:"bar",
-
 data:{
 labels:labels,
-
 datasets:[{
 label:"Progress %",
 data:values,
 backgroundColor:"#fff"
 }]
-
 },
-
 options:{
-
-plugins:{
-legend:{display:false}
-},
-
+plugins:{legend:{display:false}},
 scales:{
-y:{
-beginAtZero:true,
-max:100
+y:{beginAtZero:true,max:100}
 }
 }
-
-}
-
 });
 
 }
@@ -446,27 +269,17 @@ function exportCSV(){
 let csv="Site,Building,Item,Progress\n";
 
 for(let s in data){
-
 for(let b in data[s]){
-
 for(let i in data[s][b]){
-
 csv+=`${s},${b},${i},${data[s][b][i]}\n`;
-
 }
-
 }
-
 }
 
 let blob=new Blob([csv],{type:"text/csv"});
-
 let a=document.createElement("a");
-
 a.href=URL.createObjectURL(blob);
-
 a.download="progress.csv";
-
 a.click();
 
 }
